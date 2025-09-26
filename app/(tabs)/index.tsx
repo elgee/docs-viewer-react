@@ -1,98 +1,285 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import {
+  Alert,
+  Linking,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+interface Document {
+  id: number;
+  category: string;
+  title: string;
+  content: string;
+  url?: string;
+}
 
-export default function HomeScreen() {
+const sampleDocs: Document[] = [
+  {
+    id: 1,
+    category: 'CloudBees Platform',
+    title: 'Continuous Integration',
+    content:
+      'The CloudBees platform provides comprehensive CI/CD capabilities for enterprise software delivery. This section covers pipeline configuration, build automation, and integration with source control systems to streamline development workflows.',
+    url: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/continuous-integration/intro',
+  },
+  {
+    id: 2,
+    category: 'CloudBees Platform',
+    title: 'GitHub Actions Integration',
+    content:
+      'CloudBees seamlessly integrates with GitHub Actions to provide enhanced workflow capabilities. Learn how to configure action runners, manage secrets, and implement advanced deployment strategies within the CloudBees ecosystem.',
+    url: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/github-actions/intro',
+  },
+  {
+    id: 3,
+    category: 'CloudBees Platform',
+    title: 'Actions',
+    content:
+      'Comprehensive guide to CloudBees Actions, covering configuration, execution, and best practices for implementing automated workflows within your development pipeline.',
+    url: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/actions',
+  },
+  {
+    id: 4,
+    category: 'CloudBees Platform',
+    title: 'Applications',
+    content:
+      'The CloudBees platform simplifies application lifecycle management from development to deployment. Configure application environments, manage deployment policies, and monitor application performance across your development pipeline.',
+    url: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/applications/applications',
+  },
+  {
+    id: 5,
+    category: 'Platform Reference',
+    title: 'CloudBees Platform Lexicon',
+    content:
+      'Comprehensive glossary of CloudBees platform terminology, including definitions for pipelines, workflows, runners, and deployment concepts. Essential reference for developers and administrators working with CloudBees solutions.',
+    url: 'https://docs.cloudbees.com/lexicon/cloudbees-platform',
+  },
+  {
+    id: 6,
+    category: 'Developer Resources',
+    title: 'SDK Installation Guide',
+    content:
+      'Get started with CloudBees SDKs for feature management and platform integration. This guide covers installation procedures, authentication setup, and basic implementation patterns for various programming languages.',
+  },
+];
+
+export default function DocumentationViewer() {
+  const [currentView, setCurrentView] = useState<'home' | 'list' | 'document'>('home');
+  const [selectedCategory, setSelectedCategory] = useState<string>('');
+  const [selectedDoc, setSelectedDoc] = useState<Document | null>(null);
+  const [searchTerm, setSearchTerm] = useState<string>('');
+
+  const openDocumentLink = async (url: string) => {
+    try {
+      const supported = await Linking.canOpenURL(url);
+      if (supported) {
+        await Linking.openURL(url);
+      } else {
+        Alert.alert('Error', 'Unable to open this link');
+      }
+    } catch (error) {
+      Alert.alert('Error', 'An error occurred while opening the link');
+    }
+  };
+
+  const categories = Array.from(new Set(sampleDocs.map((doc) => doc.category)));
+
+  const filteredDocs = sampleDocs.filter(
+    (doc) =>
+      doc.category === selectedCategory &&
+      (searchTerm === '' || doc.title.toLowerCase().includes(searchTerm.toLowerCase()))
+  );
+
+  const renderHome = () => (
+    <ScrollView style={styles.container}>
+      <Text style={styles.title}>Technical Documentation</Text>
+      <Text style={styles.subtitle}>Select a category to browse documents</Text>
+
+      {categories.map((category, index) => (
+        <TouchableOpacity
+          key={index}
+          style={styles.categoryButton}
+          onPress={() => {
+            setSelectedCategory(category);
+            setCurrentView('list');
+          }}>
+          <Text style={styles.categoryText}>{category}</Text>
+          <Text style={styles.docCount}>
+            {sampleDocs.filter((doc) => doc.category === category).length} documents
+          </Text>
+        </TouchableOpacity>
+      ))}
+    </ScrollView>
+  );
+
+  const renderDocumentList = () => (
+    <ScrollView style={styles.container}>
+      <TouchableOpacity style={styles.backButton} onPress={() => setCurrentView('home')}>
+        <Text style={styles.backText}>← Back to Categories</Text>
+      </TouchableOpacity>
+
+      <Text style={styles.title}>{selectedCategory}</Text>
+
+      <TextInput
+        style={styles.searchInput}
+        placeholder='Search documents...'
+        value={searchTerm}
+        onChangeText={setSearchTerm}
+      />
+
+      {filteredDocs.map((doc) => (
+        <TouchableOpacity
+          key={doc.id}
+          style={styles.documentItem}
+          onPress={() => {
+            setSelectedDoc(doc);
+            setCurrentView('document');
+          }}>
+          <Text style={styles.docTitle}>{doc.title}</Text>
+          <Text style={styles.docPreview}>{doc.content.substring(0, 100)}...</Text>
+        </TouchableOpacity>
+      ))}
+    </ScrollView>
+  );
+
+  const renderDocument = () => (
+    <ScrollView style={styles.container}>
+      <TouchableOpacity style={styles.backButton} onPress={() => setCurrentView('list')}>
+        <Text style={styles.backText}>← Back to {selectedCategory}</Text>
+      </TouchableOpacity>
+
+      {selectedDoc && (
+        <>
+          <Text style={styles.title}>{selectedDoc.title}</Text>
+          <Text style={styles.category}>{selectedDoc.category}</Text>
+
+          {selectedDoc.url && (
+            <TouchableOpacity
+              style={styles.linkButton}
+              onPress={() => openDocumentLink(selectedDoc.url!)}>
+              <Text style={styles.linkButtonText}>📖 View Live Documentation</Text>
+            </TouchableOpacity>
+          )}
+
+          <Text style={styles.content}>{selectedDoc.content}</Text>
+        </>
+      )}
+    </ScrollView>
+  );
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
-
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <View style={styles.wrapper}>
+      {currentView === 'home' && renderHome()}
+      {currentView === 'list' && renderDocumentList()}
+      {currentView === 'document' && renderDocument()}
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
+  wrapper: {
+    flex: 1,
+    backgroundColor: '#f5f5f5',
+  },
+  container: {
+    flex: 1,
+    padding: 20,
+    paddingTop: 60,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    color: '#333',
+  },
+  subtitle: {
+    fontSize: 16,
+    color: '#666',
+    marginBottom: 30,
+  },
+  categoryButton: {
+    backgroundColor: '#fff',
+    padding: 20,
+    marginBottom: 10,
+    borderRadius: 8,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+  },
+  categoryText: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#333',
+  },
+  docCount: {
+    fontSize: 14,
+    color: '#666',
+    marginTop: 4,
+  },
+  backButton: {
+    marginBottom: 20,
+  },
+  backText: {
+    fontSize: 16,
+    color: '#007AFF',
+  },
+  searchInput: {
+    backgroundColor: '#fff',
+    padding: 12,
+    marginBottom: 20,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#ddd',
+  },
+  documentItem: {
+    backgroundColor: '#fff',
+    padding: 15,
+    marginBottom: 10,
+    borderRadius: 8,
+    elevation: 1,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 1,
+  },
+  docTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#333',
+    marginBottom: 5,
+  },
+  docPreview: {
+    fontSize: 14,
+    color: '#666',
+    lineHeight: 20,
+  },
+  category: {
+    fontSize: 14,
+    color: '#007AFF',
+    marginBottom: 15,
+  },
+  content: {
+    fontSize: 16,
+    lineHeight: 24,
+    color: '#333',
+  },
+  linkButton: {
+    backgroundColor: '#007AFF',
+    padding: 12,
+    borderRadius: 8,
+    marginVertical: 15,
     alignItems: 'center',
-    gap: 8,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  linkButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
   },
 });
