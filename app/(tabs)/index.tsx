@@ -160,10 +160,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   categoryTitle: {
-    fontSize: 20,
+    fontSize: 2,
     fontWeight: '600',
     color: '#495057',
-    marginBottom: 12,
+    marginBottom: 2,
     paddingLeft: 4,
   },
   documentCard: {
