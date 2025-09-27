@@ -52,9 +52,9 @@ const sampleDocs: Document[] = [
   {
     id: 6,
     category: '',
-    title: 'How to view this portfolio',
+    title: 'Instructions for viewing this portfolio',
     content: 'This is the README.md file from this app.',
-    url: 'https://docs.cloudbees.com/lexicon/cloudbees-platform',
+    url: 'https://github.com/elgee/docs-viewer-react/blob/main/README.md',
   },
 ];
 
@@ -144,8 +144,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#f8f9fa',
   },
   header: {
-    padding: 20,
-    paddingTop: 60,
+    padding: 15,
+    paddingTop: 40,
     backgroundColor: '#fff',
     borderBottomWidth: 1,
     borderBottomColor: '#e9ecef',
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     fontSize: 8,
     fontWeight: 'bold',
     color: '#212529',
-    marginBottom: 8,
+    marginBottom: 4,
   },
   subtitle: {
     fontSize: 16,
