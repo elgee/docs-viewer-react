@@ -42,8 +42,8 @@ If you want to view my portfolio on your Apple or Android mobile phone:
 
 4. The app loads directly on your phone. 
 
-<img src="assets/images/image0.png" alt="Home screen" width="45%">
-<img src="assets/images/image1.png" alt="Expanded view" width="45%">
+<img src="assets/images/image0.png" alt="Home screen" width="25%">
+<img src="assets/images/image1.png" alt="Expanded view" width="25%">
 
 *Left: Home screen | Right: Expanded documentation view*
 
