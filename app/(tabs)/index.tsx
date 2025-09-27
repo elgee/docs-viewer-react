@@ -156,6 +156,13 @@ export default function DocumentationViewer() {
       {selectedDoc && (
         <>
           <Text style={styles.title}>{selectedDoc.title}</Text>
+          {selectedDoc.url && (
+            <TouchableOpacity
+              style={styles.linkButton}
+              onPress={() => openDocumentLink(selectedDoc.url!)}>
+              <Text style={styles.linkButtonText}>📖 View Live Documentation</Text>
+            </TouchableOpacity>
+          )}
           <Text style={styles.category}>{selectedDoc.category}</Text>
 
           {selectedDoc.url && (
