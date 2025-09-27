@@ -42,10 +42,16 @@ If you want to view my portfolio on your Apple or Android mobile phone:
 
 4. The app loads directly on your phone. 
 
-<img src="assets/images/image0.png" alt="Home screen" width="25%">
-<img src="assets/images/image1.png" alt="Expanded view" width="25%">
-
-*Left: Home screen | Right: Expanded documentation view*
+<table>
+  <tr>
+    <td><img src="assets/images/image0.png" width="280"></td>
+    <td><img src="assets/images/image1.png" width="280"></td>
+  </tr>
+  <tr>
+    <td align="center">Home screen</td>
+    <td align="center">Expanded view</td>
+  </tr>
+</table>
 
 Select **View Live Documentation** to go to the documentation for that section. 
 
