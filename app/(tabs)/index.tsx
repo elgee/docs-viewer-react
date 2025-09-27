@@ -21,10 +21,10 @@ interface Document {
 const sampleDocs: Document[] = [
   {
     id: 1,
-    category: 'CloudBees Platform',
+    category: 'Continuous Integration docs',
     title: 'Continuous Integration',
     content:
-      'The CloudBees platform provides comprehensive CI/CD capabilities for enterprise software delivery. This section covers pipeline configuration, build automation, and integration with source control systems to streamline development workflows.',
+      'This section shows how to configure CloudBees platform to integrate with CloudBees CI and Jenkins®.',
     url: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/continuous-integration/intro',
   },
   {
