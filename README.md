@@ -42,10 +42,10 @@ If you want to view my portfolio on your Apple or Android mobile phone:
 
 4. The app loads directly on your phone. 
 
-![Home Screen](images/image0.png)
+![Home Screen](assets/images/image0.png)
 *Home screen of the portfolio app*
 
-![Expanded Documentation](images/image1.png)
+![Expanded Documentation](assets/images/image1.png)
 *Continuous Integration expanded view*
 
 Select **View Live Documentation** to go to the documentation for that section. 
