@@ -62,12 +62,14 @@ Some sections contain more than 50 pages.
 - **Applications** 
 - **Lexicon** 
 
-## Built with
+## Developer tools used
 
 - React Native
 - Expo
 - TypeScript
-- Professional technical writing content
+- Netlify
+- GitHub
+- Markdown
 
 ## About
 
