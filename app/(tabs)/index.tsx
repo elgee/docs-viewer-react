@@ -152,8 +152,8 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 16,
-    color: '#6c757d'
-    padding-bottom: -20,
+    color: '#6c757d',
+    marginBottom: -18,
   },
   categorySection: {
     marginTop: 20,
