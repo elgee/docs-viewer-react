@@ -141,14 +141,8 @@ export default function DocumentationViewer() {
             setCurrentView('document');
           }}>
           <Text style={styles.docTitle}>{doc.title}</Text>
-          <Text style={styles.docPreview}>{doc.content.substring(0, 100)}...</Text>
-          {selectedDoc.url && (
-            <TouchableOpacity
-              style={styles.linkButton}
-              onPress={() => openDocumentLink(selectedDoc.url!)}>
-              <Text style={styles.linkButtonText}>📖 View Live Documentation</Text>
-            </TouchableOpacity>
-          )}
+          <Text style={styles.docPreview}>{doc.content.substring(0, 100)}</Text>
+          <Text style={styles.linkButtonText}>📖 View Live Documentation</Text>
         </TouchableOpacity>
       ))}
     </ScrollView>
