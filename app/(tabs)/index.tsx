@@ -13,7 +13,7 @@ const sampleDocs: Document[] = [
   {
     id: 1,
     category: '',
-    title: 'Continuous Integration',
+    title: 'Continuous integration (CI)',
     content:
       'How to integrate your CI tool with the platform and take advantage of platform features.',
     url: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/continuous-integration/intro',
@@ -21,7 +21,7 @@ const sampleDocs: Document[] = [
   {
     id: 2,
     category: '',
-    title: 'GitHub Actions Integration',
+    title: 'GitHub Actions integration',
     content:
       'How to set up an integration with GitHub Actions so that you can view GHA workflows in the platform.',
     url: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/github-actions/intro',
@@ -31,7 +31,7 @@ const sampleDocs: Document[] = [
     category: '',
     title: 'Actions',
     content:
-      'A comprehensive guide to reusable automation, known as Actions, including configuration options, prerequisites, and example workflows.',
+      'A comprehensive guide to reusable automation, known as actions, including configuration options, prerequisites, and example workflows.',
     url: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/actions',
   },
   {

@@ -52,16 +52,17 @@ Select **View Live Documentation** to go to the documentation for that section.
 
 ## Portfolio content
 
-The app showcases real CloudBees platform documentation. Select the goes to an introduction page for a section of the documentation authored by me.
+The app showcases real CloudBees platform documentation. 
+Select **View Live Documentation** to display the introductory page to each documentation section authored by me.
 Some sections contain more than 50 pages. 
 
 - **Continuous Integration** 
-- **GitHub Actions Integration** 
+- **GitHub Actions integration** 
 - **Actions** 
 - **Applications** 
-- **Platform Lexicon** 
+- **Lexicon** 
 
-## Built With
+## Built with
 
 - React Native
 - Expo
@@ -70,4 +71,4 @@ Some sections contain more than 50 pages.
 
 ## About
 
-This app serves as both a mobile development portfolio piece and a showcase of professional technical documentation work. Created to demonstrate React Native capabilities while highlighting real-world technical writing experience with enterprise software platforms.
+This app serves as a portfolio for both professional technical documentation work and React Native mobile app development. 
