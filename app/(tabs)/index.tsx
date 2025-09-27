@@ -1,14 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Alert,
-  Linking,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking, Alert } from 'react-native';
 
 interface Document {
   id: number;
@@ -21,10 +12,10 @@ interface Document {
 const sampleDocs: Document[] = [
   {
     id: 1,
-    category: 'Continuous Integration docs',
+    category: 'CloudBees Platform',
     title: 'Continuous Integration',
     content:
-      'This section shows how to configure CloudBees platform to integrate with CloudBees CI and Jenkins®.',
+      'The CloudBees platform provides comprehensive CI/CD capabilities for enterprise software delivery. This section covers pipeline configuration, build automation, and integration with source control systems to streamline development workflows. Features include advanced pipeline orchestration, parallel execution, and seamless integration with popular development tools.',
     url: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/continuous-integration/intro',
   },
   {
@@ -32,7 +23,7 @@ const sampleDocs: Document[] = [
     category: 'CloudBees Platform',
     title: 'GitHub Actions Integration',
     content:
-      'CloudBees seamlessly integrates with GitHub Actions to provide enhanced workflow capabilities. Learn how to configure action runners, manage secrets, and implement advanced deployment strategies within the CloudBees ecosystem.',
+      'CloudBees seamlessly integrates with GitHub Actions to provide enhanced workflow capabilities. Learn how to configure action runners, manage secrets, and implement advanced deployment strategies within the CloudBees ecosystem. This integration enables hybrid workflows that leverage both GitHub Actions and CloudBees platform capabilities.',
     url: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/github-actions/intro',
   },
   {
@@ -40,7 +31,7 @@ const sampleDocs: Document[] = [
     category: 'CloudBees Platform',
     title: 'Actions',
     content:
-      'Comprehensive guide to CloudBees Actions, covering configuration, execution, and best practices for implementing automated workflows within your development pipeline.',
+      'Comprehensive guide to CloudBees Actions, covering configuration, execution, and best practices for implementing automated workflows within your development pipeline. Actions provide reusable automation components that can be shared across teams and projects.',
     url: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/actions',
   },
   {
@@ -48,7 +39,7 @@ const sampleDocs: Document[] = [
     category: 'CloudBees Platform',
     title: 'Applications',
     content:
-      'The CloudBees platform simplifies application lifecycle management from development to deployment. Configure application environments, manage deployment policies, and monitor application performance across your development pipeline.',
+      'The CloudBees platform simplifies application lifecycle management from development to deployment. Configure application environments, manage deployment policies, and monitor application performance across your development pipeline. Includes support for multi-environment deployments and rollback strategies.',
     url: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/applications/applications',
   },
   {
@@ -56,7 +47,7 @@ const sampleDocs: Document[] = [
     category: 'Platform Reference',
     title: 'CloudBees Platform Lexicon',
     content:
-      'Comprehensive glossary of CloudBees platform terminology, including definitions for pipelines, workflows, runners, and deployment concepts. Essential reference for developers and administrators working with CloudBees solutions.',
+      'Comprehensive glossary of CloudBees platform terminology, including definitions for pipelines, workflows, runners, and deployment concepts. Essential reference for developers and administrators working with CloudBees solutions. Covers both basic concepts and advanced architectural patterns.',
     url: 'https://docs.cloudbees.com/lexicon/cloudbees-platform',
   },
   {
@@ -64,15 +55,22 @@ const sampleDocs: Document[] = [
     category: 'Developer Resources',
     title: 'SDK Installation Guide',
     content:
-      'Get started with CloudBees SDKs for feature management and platform integration. This guide covers installation procedures, authentication setup, and basic implementation patterns for various programming languages.',
+      'Get started with CloudBees SDKs for feature management and platform integration. This guide covers installation procedures, authentication setup, and basic implementation patterns for various programming languages including JavaScript, Python, Java, and .NET.',
   },
 ];
 
 export default function DocumentationViewer() {
-  const [currentView, setCurrentView] = useState<'home' | 'list' | 'document'>('home');
-  const [selectedCategory, setSelectedCategory] = useState<string>('');
-  const [selectedDoc, setSelectedDoc] = useState<Document | null>(null);
-  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [expandedItems, setExpandedItems] = useState<Set<number>>(new Set());
+
+  const toggleExpanded = (id: number) => {
+    const newExpanded = new Set(expandedItems);
+    if (newExpanded.has(id)) {
+      newExpanded.delete(id);
+    } else {
+      newExpanded.add(id);
+    }
+    setExpandedItems(newExpanded);
+  };
 
   const openDocumentLink = async (url: string) => {
     try {
@@ -87,201 +85,153 @@ export default function DocumentationViewer() {
     }
   };
 
-  const categories = Array.from(new Set(sampleDocs.map((doc) => doc.category)));
-
-  const filteredDocs = sampleDocs.filter(
-    (doc) =>
-      doc.category === selectedCategory &&
-      (searchTerm === '' || doc.title.toLowerCase().includes(searchTerm.toLowerCase()))
-  );
-
-  const renderHome = () => (
-    <ScrollView style={styles.container}>
-      <Text style={styles.title}>Technical Documentation</Text>
-      <Text style={styles.subtitle}>Select a category to browse documents</Text>
-
-      {categories.map((category, index) => (
-        <TouchableOpacity
-          key={index}
-          style={styles.categoryButton}
-          onPress={() => {
-            setSelectedCategory(category);
-            setCurrentView('list');
-          }}>
-          <Text style={styles.categoryText}>{category}</Text>
-          <Text style={styles.docCount}>
-            {sampleDocs.filter((doc) => doc.category === category).length} documents
-          </Text>
-        </TouchableOpacity>
-      ))}
-    </ScrollView>
-  );
-
-  const renderDocumentList = () => (
-    <ScrollView style={styles.container}>
-      <TouchableOpacity style={styles.backButton} onPress={() => setCurrentView('home')}>
-        <Text style={styles.backText}>← Back to Categories</Text>
-      </TouchableOpacity>
-
-      <Text style={styles.title}>{selectedCategory}</Text>
-
-      <TextInput
-        style={styles.searchInput}
-        placeholder='Search documents...'
-        value={searchTerm}
-        onChangeText={setSearchTerm}
-      />
-
-      {filteredDocs.map((doc) => (
-        <TouchableOpacity
-          key={doc.id}
-          style={styles.documentItem}
-          onPress={() => {
-            setSelectedDoc(doc);
-            setCurrentView('document');
-          }}>
-          <Text style={styles.docTitle}>{doc.title}</Text>
-          <Text style={styles.docPreview}>{doc.content.substring(0, 100)}</Text>
-          <Text style={styles.linkButtonText}>📖 View Live Documentation</Text>
-        </TouchableOpacity>
-      ))}
-    </ScrollView>
-  );
-
-  const renderDocument = () => (
-    <ScrollView style={styles.container}>
-      <TouchableOpacity style={styles.backButton} onPress={() => setCurrentView('list')}>
-        <Text style={styles.backText}>← Back to {selectedCategory}</Text>
-      </TouchableOpacity>
-
-      {selectedDoc && (
-        <>
-          <Text style={styles.title}>{selectedDoc.title}</Text>
-          
-          <Text style={styles.category}>{selectedDoc.category}</Text>
-
-          {selectedDoc.url && (
-            <TouchableOpacity
-              style={styles.linkButton}
-              onPress={() => openDocumentLink(selectedDoc.url!)}>
-              <Text style={styles.linkButtonText}>📖 View Live Documentation</Text>
-            </TouchableOpacity>
-          )}
-
-          <Text style={styles.content}>{selectedDoc.content}</Text>
-        </>
-      )}
-    </ScrollView>
-  );
+  const groupedDocs = sampleDocs.reduce((acc, doc) => {
+    if (!acc[doc.category]) {
+      acc[doc.category] = [];
+    }
+    acc[doc.category].push(doc);
+    return acc;
+  }, {} as Record<string, Document[]>);
 
   return (
-    <View style={styles.wrapper}>
-      {currentView === 'home' && renderHome()}
-      {currentView === 'list' && renderDocumentList()}
-      {currentView === 'document' && renderDocument()}
-    </View>
+    <ScrollView style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.title}>CloudBees Documentation</Text>
+        <Text style={styles.subtitle}>Technical documentation authored by Elizabeth Gaudet</Text>
+      </View>
+
+      {Object.entries(groupedDocs).map(([category, docs]) => (
+        <View key={category} style={styles.categorySection}>
+          <Text style={styles.categoryTitle}>{category}</Text>
+
+          {docs.map((doc) => (
+            <View key={doc.id} style={styles.documentCard}>
+              <TouchableOpacity
+                style={styles.documentHeader}
+                onPress={() => toggleExpanded(doc.id)}>
+                <Text style={styles.documentTitle}>{doc.title}</Text>
+                <Text style={styles.expandIcon}>{expandedItems.has(doc.id) ? '−' : '+'}</Text>
+              </TouchableOpacity>
+
+              {expandedItems.has(doc.id) && (
+                <View style={styles.documentContent}>
+                  <Text style={styles.contentText}>{doc.content}</Text>
+
+                  {doc.url && (
+                    <TouchableOpacity
+                      style={styles.linkButton}
+                      onPress={() => openDocumentLink(doc.url!)}>
+                      <Text style={styles.linkButtonText}>View Live Documentation</Text>
+                    </TouchableOpacity>
+                  )}
+                </View>
+              )}
+            </View>
+          ))}
+        </View>
+      ))}
+
+      <View style={styles.footer}>
+        <Text style={styles.footerText}>
+          Portfolio showcasing technical documentation and React Native development
+        </Text>
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-    backgroundColor: '#f5f5f5',
-  },
   container: {
     flex: 1,
+    backgroundColor: '#f8f9fa',
+  },
+  header: {
     padding: 20,
     paddingTop: 60,
+    backgroundColor: '#fff',
+    borderBottomWidth: 1,
+    borderBottomColor: '#e9ecef',
   },
   title: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: 'bold',
-    marginBottom: 10,
-    color: '#333',
+    color: '#212529',
+    marginBottom: 8,
   },
   subtitle: {
     fontSize: 16,
-    color: '#666',
-    marginBottom: 30,
+    color: '#6c757d',
   },
-  categoryButton: {
+  categorySection: {
+    marginTop: 20,
+    paddingHorizontal: 20,
+  },
+  categoryTitle: {
+    fontSize: 20,
+    fontWeight: '600',
+    color: '#495057',
+    marginBottom: 12,
+    paddingLeft: 4,
+  },
+  documentCard: {
     backgroundColor: '#fff',
-    padding: 20,
-    marginBottom: 10,
-    borderRadius: 8,
+    marginBottom: 8,
+    borderRadius: 12,
     elevation: 2,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
-    shadowRadius: 2,
+    shadowRadius: 4,
   },
-  categoryText: {
-    fontSize: 18,
+  documentHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 16,
+  },
+  documentTitle: {
+    fontSize: 17,
     fontWeight: '600',
-    color: '#333',
+    color: '#212529',
+    flex: 1,
   },
-  docCount: {
-    fontSize: 14,
-    color: '#666',
-    marginTop: 4,
-  },
-  backButton: {
-    marginBottom: 20,
-  },
-  backText: {
-    fontSize: 16,
+  expandIcon: {
+    fontSize: 20,
+    fontWeight: '300',
     color: '#007AFF',
+    marginLeft: 12,
   },
-  searchInput: {
-    backgroundColor: '#fff',
-    padding: 12,
-    marginBottom: 20,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: '#ddd',
+  documentContent: {
+    paddingHorizontal: 16,
+    paddingBottom: 16,
+    borderTopWidth: 1,
+    borderTopColor: '#f1f3f4',
   },
-  documentItem: {
-    backgroundColor: '#fff',
-    padding: 15,
-    marginBottom: 10,
-    borderRadius: 8,
-    elevation: 1,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 1,
-  },
-  docTitle: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#333',
-    marginBottom: 5,
-  },
-  docPreview: {
-    fontSize: 14,
-    color: '#666',
-    lineHeight: 20,
-  },
-  category: {
-    fontSize: 14,
-    color: '#007AFF',
-    marginBottom: 15,
-  },
-  content: {
-    fontSize: 16,
-    lineHeight: 24,
-    color: '#333',
+  contentText: {
+    fontSize: 15,
+    lineHeight: 22,
+    color: '#495057',
+    marginBottom: 16,
   },
   linkButton: {
     backgroundColor: '#007AFF',
-    padding: 12,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
     borderRadius: 8,
-    marginVertical: 15,
     alignItems: 'center',
   },
   linkButtonText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '600',
+  },
+  footer: {
+    padding: 20,
+    alignItems: 'center',
+  },
+  footerText: {
+    fontSize: 14,
+    color: '#6c757d',
+    textAlign: 'center',
   },
 });
