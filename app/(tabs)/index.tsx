@@ -119,7 +119,7 @@ export default function DocumentationViewer() {
                     <TouchableOpacity
                       style={styles.linkButton}
                       onPress={() => openDocumentLink(doc.url!)}>
-                      <Text style={styles.linkButtonText}>View Live Documentation</Text>
+                      <Text style={styles.linkButtonText}>View live documentation</Text>
                     </TouchableOpacity>
                   )}
                 </View>
