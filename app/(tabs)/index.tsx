@@ -46,8 +46,14 @@ const sampleDocs: Document[] = [
     id: 5,
     category: '',
     title: 'Lexicon',
-    content:
-      'Comprehensive glossary of platform terminology.',
+    content: 'Comprehensive glossary of platform terminology.',
+    url: 'https://docs.cloudbees.com/lexicon/cloudbees-platform',
+  },
+  {
+    id: 6,
+    category: '',
+    title: 'How to view this portfolio',
+    content: 'This is the README.md file from this app.',
     url: 'https://docs.cloudbees.com/lexicon/cloudbees-platform',
   },
 ];
