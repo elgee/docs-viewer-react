@@ -153,10 +153,10 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 16,
     color: '#6c757d',
-    marginBottom: -18,
+    marginBottom: 8,
   },
   categorySection: {
-    marginTop: 20,
+    marginTop: 2,
     paddingHorizontal: 20,
   },
   categoryTitle: {
