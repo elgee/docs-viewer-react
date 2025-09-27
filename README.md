@@ -53,7 +53,7 @@ If you want to view my portfolio on your Apple or Android mobile phone:
   </tr>
 </table>
 
-Select **View Live Documentation** to go to the documentation for that section. 
+Select **View live documentation** to go to the documentation for that section. 
 
 ## Portfolio content
 
