@@ -142,6 +142,13 @@ export default function DocumentationViewer() {
           }}>
           <Text style={styles.docTitle}>{doc.title}</Text>
           <Text style={styles.docPreview}>{doc.content.substring(0, 100)}...</Text>
+          {selectedDoc.url && (
+            <TouchableOpacity
+              style={styles.linkButton}
+              onPress={() => openDocumentLink(selectedDoc.url!)}>
+              <Text style={styles.linkButtonText}>📖 View Live Documentation</Text>
+            </TouchableOpacity>
+          )}
         </TouchableOpacity>
       ))}
     </ScrollView>
@@ -156,13 +163,7 @@ export default function DocumentationViewer() {
       {selectedDoc && (
         <>
           <Text style={styles.title}>{selectedDoc.title}</Text>
-          {selectedDoc.url && (
-            <TouchableOpacity
-              style={styles.linkButton}
-              onPress={() => openDocumentLink(selectedDoc.url!)}>
-              <Text style={styles.linkButtonText}>📖 View Live Documentation</Text>
-            </TouchableOpacity>
-          )}
+          
           <Text style={styles.category}>{selectedDoc.category}</Text>
 
           {selectedDoc.url && (
