@@ -12,23 +12,23 @@ interface Document {
 const sampleDocs: Document[] = [
   {
     id: 1,
-    category: 'CloudBees Platform',
+    category: '',
     title: 'Continuous Integration',
     content:
-      'The CloudBees platform provides comprehensive CI/CD capabilities for enterprise software delivery. This section covers pipeline configuration, build automation, and integration with source control systems to streamline development workflows. Features include advanced pipeline orchestration, parallel execution, and seamless integration with popular development tools.',
+      'How to integrate your CI tool with the platform and take advantage of platform features.',
     url: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/continuous-integration/intro',
   },
   {
     id: 2,
-    category: 'CloudBees Platform',
+    category: '',
     title: 'GitHub Actions Integration',
     content:
-      'CloudBees seamlessly integrates with GitHub Actions to provide enhanced workflow capabilities. Learn how to configure action runners, manage secrets, and implement advanced deployment strategies within the CloudBees ecosystem. This integration enables hybrid workflows that leverage both GitHub Actions and CloudBees platform capabilities.',
+      'How to set up an integration with GitHub Actions so that you can view GHA workflows in the platform.',
     url: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/github-actions/intro',
   },
   {
     id: 3,
-    category: 'CloudBees Platform',
+    category: '',
     title: 'Actions',
     content:
       'Comprehensive guide to CloudBees Actions, covering configuration, execution, and best practices for implementing automated workflows within your development pipeline. Actions provide reusable automation components that can be shared across teams and projects.',
@@ -36,7 +36,7 @@ const sampleDocs: Document[] = [
   },
   {
     id: 4,
-    category: 'CloudBees Platform',
+    category: '',
     title: 'Applications',
     content:
       'The CloudBees platform simplifies application lifecycle management from development to deployment. Configure application environments, manage deployment policies, and monitor application performance across your development pipeline. Includes support for multi-environment deployments and rollback strategies.',
@@ -44,18 +44,11 @@ const sampleDocs: Document[] = [
   },
   {
     id: 5,
-    category: 'Platform Reference',
-    title: 'CloudBees Platform Lexicon',
+    category: '',
+    title: 'Lexicon',
     content:
       'Comprehensive glossary of CloudBees platform terminology, including definitions for pipelines, workflows, runners, and deployment concepts. Essential reference for developers and administrators working with CloudBees solutions. Covers both basic concepts and advanced architectural patterns.',
     url: 'https://docs.cloudbees.com/lexicon/cloudbees-platform',
-  },
-  {
-    id: 6,
-    category: 'Developer Resources',
-    title: 'SDK Installation Guide',
-    content:
-      'Get started with CloudBees SDKs for feature management and platform integration. This guide covers installation procedures, authentication setup, and basic implementation patterns for various programming languages including JavaScript, Python, Java, and .NET.',
   },
 ];
 
@@ -96,7 +89,6 @@ export default function DocumentationViewer() {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>CloudBees Documentation</Text>
         <Text style={styles.subtitle}>Technical documentation authored by Elizabeth Gaudet</Text>
       </View>
 
