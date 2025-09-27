@@ -1,8 +1,14 @@
-# Welcome to your Expo app 👋
+# Expo mobile app to display my documentation portfolio
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-## Get started
+## Purpose
+
+I wanted to highlight my documentation in an app. I built this with the help of AI. 
+
+
+
+## Resources from Expo
 
 1. Install dependencies
 
