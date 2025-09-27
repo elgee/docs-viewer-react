@@ -31,7 +31,7 @@ const sampleDocs: Document[] = [
     category: '',
     title: 'Actions',
     content:
-      'Comprehensive guide to CloudBees Actions, covering configuration, execution, and best practices for implementing automated workflows within your development pipeline. Actions provide reusable automation components that can be shared across teams and projects.',
+      'A comprehensive guide to reusable automation, known as Actions, including configuration options, prerequisites, and example workflows.',
     url: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/actions',
   },
   {
@@ -39,7 +39,7 @@ const sampleDocs: Document[] = [
     category: '',
     title: 'Applications',
     content:
-      'The CloudBees platform simplifies application lifecycle management from development to deployment. Configure application environments, manage deployment policies, and monitor application performance across your development pipeline. Includes support for multi-environment deployments and rollback strategies.',
+      'How to get started building applications with the platform, including deployment and release.',
     url: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/applications/applications',
   },
   {
@@ -47,7 +47,7 @@ const sampleDocs: Document[] = [
     category: '',
     title: 'Lexicon',
     content:
-      'Comprehensive glossary of CloudBees platform terminology, including definitions for pipelines, workflows, runners, and deployment concepts. Essential reference for developers and administrators working with CloudBees solutions. Covers both basic concepts and advanced architectural patterns.',
+      'Comprehensive glossary of platform terminology.',
     url: 'https://docs.cloudbees.com/lexicon/cloudbees-platform',
   },
 ];
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     borderBottomColor: '#e9ecef',
   },
   title: {
-    fontSize: 28,
+    fontSize: 8,
     fontWeight: 'bold',
     color: '#212529',
     marginBottom: 8,
