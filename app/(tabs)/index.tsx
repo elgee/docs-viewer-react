@@ -128,13 +128,10 @@ export default function DocumentationViewer() {
                 <Text style={styles.bold}>To explore:</Text> Select the + icon on any card to read the expanded description. Then select "View live documentation" to display each introduction page for documentation sections authored by me. For example, the Actions section includes more than 50 pages I authored. 
               </Text>
               <Text style={styles.bodyText}>
-                This portfolio itself is a React Native app built with Expo and deployed to Netlify. I also wrote detailed instructions for using the app in the README.md file, demonstrating both my technical writing and development capabilities.
+                This portfolio itself is a React Native app built with Expo and deployed to Netlify. I also wrote <a href=https://github.com/elgee/docs-viewer-react/blob/README.md/>detailed instructions in the README.md file</a> to use the app, demonstrating both my technical writing and development capabilities.
               </Text>
 
             </View>
- <TouchableOpacity style={styles.resumeButton} onPress={openResume}>
-              <Text style={styles.resumeButtonText}>View the app documentation</Text>
-            </TouchableOpacity>
             <TouchableOpacity style={styles.resumeButton} onPress={openResume}>
               <Text style={styles.resumeButtonText}>Download my resume (PDF)</Text>
             </TouchableOpacity>
