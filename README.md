@@ -1,6 +1,6 @@
 # Expo mobile app to display my documentation portfolio
 
-Run this React Native mobile app to view my technical writing portfolio. This portfolio includes links to live documentation I authored while working as a Senior Technical Content Developer at CloudBees. 
+Run this React Native mobile app to view my technical writing portfolio. This portfolio includes links to live documentation I authored. 
 
 I set up my portfolio using [`create-expo-app`](https://www.npmjs.com/package/create-expo-app) so that you could view it on your phone, if desired.
 
@@ -57,8 +57,8 @@ Select **View live documentation** to go to the documentation for that section.
 
 ## Portfolio content
 
-The app showcases real CloudBees platform documentation. 
-Select **View Live Documentation** to display the introductory page to each documentation section authored by me.
+The app showcases live documentation. 
+Select **View live documentation** to display the introductory page to each documentation section authored by me.
 Some sections contain more than 50 pages. 
 
 - **Continuous Integration** 
@@ -78,4 +78,4 @@ Some sections contain more than 50 pages.
 
 ## About
 
-This app serves as a portfolio for both professional technical documentation work and React Native mobile app development. 
+This app serves as a portfolio for my professional technical documentation work and my ability to use AI effectively. I set up this React Native mobile app with AI assistance.
