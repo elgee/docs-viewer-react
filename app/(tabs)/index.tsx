@@ -49,13 +49,6 @@ const sampleDocs: Document[] = [
     content: 'Comprehensive glossary of platform terminology.',
     url: 'https://docs.cloudbees.com/lexicon/cloudbees-platform',
   },
-  {
-    id: 6,
-    category: '',
-    title: 'Instructions for viewing this portfolio',
-    content: 'This is the README.md file from this app.',
-    url: 'https://github.com/elgee/docs-viewer-react/blob/main/README.md',
-  },
 ];
 
 export default function DocumentationViewer() {
@@ -84,6 +77,20 @@ export default function DocumentationViewer() {
     }
   };
 
+  const openResume = async () => {
+    const resumeUrl = require('../../assets/images/resume.pdf');
+    try {
+      const supported = await Linking.canOpenURL(resumeUrl);
+      if (supported) {
+        await Linking.openURL(resumeUrl);
+      } else {
+        Alert.alert('Error', 'Unable to open resume');
+      }
+    } catch (error) {
+      Alert.alert('Error', 'An error occurred while opening the resume');
+    }
+  };
+
   const groupedDocs = sampleDocs.reduce((acc, doc) => {
     if (!acc[doc.category]) {
       acc[doc.category] = [];
@@ -94,45 +101,90 @@ export default function DocumentationViewer() {
 
   return (
     <ScrollView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.subtitle}>Technical documentation authored by Elizabeth Gaudet</Text>
-      </View>
-
-      {Object.entries(groupedDocs).map(([category, docs]) => (
-        <View key={category} style={styles.categorySection}>
-          <Text style={styles.categoryTitle}>{category}</Text>
-
-          {docs.map((doc) => (
-            <View key={doc.id} style={styles.documentCard}>
-              <TouchableOpacity
-                style={styles.documentHeader}
-                onPress={() => toggleExpanded(doc.id)}>
-                <Text style={styles.documentTitle}>{doc.title}</Text>
-                <Text style={styles.expandIcon}>{expandedItems.has(doc.id) ? '−' : '+'}</Text>
-              </TouchableOpacity>
-
-              {expandedItems.has(doc.id) && (
-                <View style={styles.documentContent}>
-                  <Text style={styles.contentText}>{doc.content}</Text>
-
-                  {doc.url && (
-                    <TouchableOpacity
-                      style={styles.linkButton}
-                      onPress={() => openDocumentLink(doc.url!)}>
-                      <Text style={styles.linkButtonText}>View live documentation</Text>
-                    </TouchableOpacity>
-                  )}
-                </View>
-              )}
-            </View>
-          ))}
+      <View style={styles.contentWrapper}>
+        <View style={styles.header}>
+          <Text style={styles.headerTitle}>Elizabeth Gaudet - Technical Writing Portfolio</Text>
         </View>
-      ))}
 
-      <View style={styles.footer}>
-        <Text style={styles.footerText}>
-          Portfolio showcasing technical documentation and React Native development
-        </Text>
+        <View style={styles.mainContent}>
+          {/* Left Column - About and Instructions */}
+          <View style={styles.leftColumn}>
+            <View style={styles.aboutCard}>
+              <Text style={styles.sectionTitle}>About This Portfolio</Text>
+              <Text style={styles.bodyText}>
+                I'm a technical writer with 14 years of experience creating documentation that empowers users and reduces support burden. This portfolio showcases both my technical writing expertise and React Native development skills.
+              </Text>
+              <Text style={styles.bodyText}>
+                My background includes extensive experience with docs-as-code workflows, Git-based collaboration, and Agile methodologies. I specialize in translating complex technical concepts into clear, actionable content.
+              </Text>
+            </View>
+
+            <View style={styles.instructionsCard}>
+              <Text style={styles.sectionTitle}>How to Use This Portfolio</Text>
+              <Text style={styles.bodyText}>
+                The documentation examples on the right showcase real technical documentation I've authored. Each card represents a major documentation section.
+              </Text>
+              <Text style={styles.bodyText}>
+                <Text style={styles.bold}>To explore:</Text> Click the + icon on any card to expand it and read the description. Then click "View live documentation" to see the full documentation on the CloudBees website.
+              </Text>
+              <Text style={styles.bodyText}>
+                This portfolio itself is a React Native app built with Expo and deployed to Netlify, demonstrating both technical writing and development capabilities.
+              </Text>
+            </View>
+
+            <TouchableOpacity style={styles.resumeButton} onPress={openResume}>
+              <Text style={styles.resumeButtonText}>Download Resume (PDF)</Text>
+            </TouchableOpacity>
+
+            <View style={styles.linksCard}>
+              <TouchableOpacity onPress={() => Linking.openURL('https://www.linkedin.com/in/l-b1a37b37')}>
+                <Text style={styles.linkText}>LinkedIn Profile</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => Linking.openURL('https://github.com/elgee/docs-viewer-react')}>
+                <Text style={styles.linkText}>View Source Code on GitHub</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          {/* Right Column - Documentation Examples */}
+          <View style={styles.rightColumn}>
+            <Text style={styles.columnTitle}>Documentation Examples</Text>
+            {Object.entries(groupedDocs).map(([category, docs]) => (
+              <View key={category} style={styles.categorySection}>
+                {docs.map((doc) => (
+                  <View key={doc.id} style={styles.documentCard}>
+                    <TouchableOpacity
+                      style={styles.documentHeader}
+                      onPress={() => toggleExpanded(doc.id)}>
+                      <Text style={styles.documentTitle}>{doc.title}</Text>
+                      <Text style={styles.expandIcon}>{expandedItems.has(doc.id) ? '−' : '+'}</Text>
+                    </TouchableOpacity>
+
+                    {expandedItems.has(doc.id) && (
+                      <View style={styles.documentContent}>
+                        <Text style={styles.contentText}>{doc.content}</Text>
+
+                        {doc.url && (
+                          <TouchableOpacity
+                            style={styles.linkButton}
+                            onPress={() => openDocumentLink(doc.url!)}>
+                            <Text style={styles.linkButtonText}>View live documentation</Text>
+                          </TouchableOpacity>
+                        )}
+                      </View>
+                    )}
+                  </View>
+                ))}
+              </View>
+            ))}
+          </View>
+        </View>
+
+        <View style={styles.footer}>
+          <Text style={styles.footerText}>
+            Portfolio showcasing technical documentation and React Native development
+          </Text>
+        </View>
       </View>
     </ScrollView>
   );
@@ -143,38 +195,116 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f8f9fa',
   },
+  contentWrapper: {
+    maxWidth: 1200,
+    width: '100%',
+    alignSelf: 'center',
+  },
   header: {
-    padding: 15,
+    padding: 20,
     paddingTop: 40,
     backgroundColor: '#fff',
     borderBottomWidth: 1,
     borderBottomColor: '#e9ecef',
   },
-  title: {
-    fontSize: 8,
+  headerTitle: {
+    fontSize: 24,
     fontWeight: 'bold',
     color: '#212529',
-    marginBottom: 4,
   },
-  subtitle: {
+  mainContent: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    padding: 20,
+    gap: 20,
+  },
+  leftColumn: {
+    flex: 1,
+    minWidth: 300,
+  },
+  rightColumn: {
+    flex: 1,
+    minWidth: 300,
+  },
+  columnTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#212529',
+    marginBottom: 16,
+  },
+  aboutCard: {
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 12,
+    marginBottom: 16,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+  },
+  instructionsCard: {
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 12,
+    marginBottom: 16,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+  },
+  linksCard: {
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 12,
+    marginBottom: 16,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#212529',
+    marginBottom: 12,
+  },
+  bodyText: {
+    fontSize: 15,
+    lineHeight: 24,
+    color: '#495057',
+    marginBottom: 12,
+  },
+  bold: {
+    fontWeight: '600',
+  },
+  resumeButton: {
+    backgroundColor: '#28a745',
+    paddingVertical: 14,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  resumeButtonText: {
+    color: '#fff',
     fontSize: 16,
-    color: '#6c757d',
-    marginBottom: 8,
+    fontWeight: '600',
+  },
+  linkText: {
+    fontSize: 15,
+    color: '#007AFF',
+    marginBottom: 12,
+    textDecorationLine: 'underline',
   },
   categorySection: {
-    marginTop: 2,
-    paddingHorizontal: 20,
-  },
-  categoryTitle: {
-    fontSize: 2,
-    fontWeight: '600',
-    color: '#495057',
     marginBottom: 2,
-    paddingLeft: 4,
   },
   documentCard: {
     backgroundColor: '#fff',
-    marginBottom: 8,
+    marginBottom: 12,
     borderRadius: 12,
     elevation: 2,
     shadowColor: '#000',
@@ -227,6 +357,8 @@ const styles = StyleSheet.create({
   footer: {
     padding: 20,
     alignItems: 'center',
+    borderTopWidth: 1,
+    borderTopColor: '#e9ecef',
   },
   footerText: {
     fontSize: 14,
