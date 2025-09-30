@@ -6,10 +6,9 @@ I set up my portfolio using [`create-expo-app`](https://www.npmjs.com/package/cr
 
 The [Expo](https://expo.dev) Go app is a sandbox mobile application that enables you to preview React Native applications on a mobile device without the need for a full development environment.
 
-[!NOTE]
-If you do not want to install the Expo Go app on your phone, you can still view my portfolio! 
-Go to [https://storied-semifreddo-5b2900.netlify.app/](
-   https://storied-semifreddo-5b2900.netlify.app/). Enjoy.
+> [!NOTE]
+> If you do not want to install the Expo Go app on your phone, you can still view my portfolio! 
+> Go to [https://storied-semifreddo-5b2900.netlify.app/](https://storied-semifreddo-5b2900.netlify.app/). Enjoy.
 
 ## Technical requirements for viewing on mobile
 
