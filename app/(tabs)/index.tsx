@@ -78,7 +78,7 @@ export default function DocumentationViewer() {
   };
 
   const openResume = async () => {
-    const resumeUrl = require('https://storied-semifreddo-5b2900.netlify.app/public/resume.pdf');
+    const resumeUrl = 'https://storied-semifreddo-5b2900.netlify.app/public/resume.pdf';
     try {
       const supported = await Linking.canOpenURL(resumeUrl);
       if (supported) {
@@ -102,10 +102,9 @@ export default function DocumentationViewer() {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
-        <View style={styles.contentWrapper}>
-          <Text style={styles.headerTitle}>Elizabeth Gaudet - Technical writing portfolio</Text>
-        </View>
-
+        <Text style={styles.headerTitle}>Elizabeth Gaudet - Technical writing portfolio</Text>
+      </View>
+      <View style={styles.contentWrapper}>
         <View style={styles.mainContent}>
           {/* Left Column - About and Instructions */}
           <View style={styles.leftColumn}>
@@ -116,7 +115,6 @@ export default function DocumentationViewer() {
                 enables user success. This portfolio showcases both my technical writing expertise
                 and React Native development skills (with help from AI).
               </Text>
-              
             </View>
 
             <View style={styles.instructionsCard}>
@@ -196,12 +194,11 @@ export default function DocumentationViewer() {
             ))}
           </View>
         </View>
-
-        <View style={styles.footer}>
-          <Text style={styles.footerText}>
-            Portfolio showcasing technical documentation and React Native development
-          </Text>
-        </View>
+      </View>
+      <View style={styles.footer}>
+        <Text style={styles.footerText}>
+          Portfolio showcasing technical documentation and React Native development
+        </Text>
       </View>
     </ScrollView>
   );
