@@ -227,11 +227,13 @@ const styles = StyleSheet.create({
   },
   leftColumn: {
     flex: 1,
-    minWidth: 300,
+    minWidth: 280,
+    maxWidth: 500,
   },
   rightColumn: {
     flex: 1,
-    minWidth: 300,
+    minWidth: 280,
+    maxWidth: 600,
   },
   columnTitle: {
     fontSize: 20,
@@ -288,7 +290,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   resumeButton: {
-    backgroundColor: '#28a745',
+    backgroundColor: '#5B2C6F',
     paddingVertical: 14,
     paddingHorizontal: 20,
     borderRadius: 8,
@@ -350,7 +352,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   linkButton: {
-    backgroundColor: '#007AFF',
+    backgroundColor: '#8B5FA8',
     paddingVertical: 12,
     paddingHorizontal: 16,
     borderRadius: 8,
@@ -367,13 +369,8 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: '#e9ecef',
   },
-  footerText: {
-    fontSize: 14,
-    color: '#6c757d',
-    textAlign: 'center',
-  },
   inlineLink: {
-  color: '#007AFF',
-  textDecorationLine: 'underline',
-},
+    color: '#007AFF',
+    textDecorationLine: 'underline',
+  },
 });
