@@ -78,7 +78,8 @@ export default function DocumentationViewer() {
   };
 
   const openResume = async () => {
-    const resumeUrl = require('../../assets/images/resume.pdf');
+    // For web, use a direct path. For mobile, you'll need to host the PDF somewhere
+    const resumeUrl = 'https://storied-semifreddo-5b2900.netlify.app/assets/images/resume.pdf';
     try {
       const supported = await Linking.canOpenURL(resumeUrl);
       if (supported) {
@@ -101,18 +102,18 @@ export default function DocumentationViewer() {
 
   return (
     <ScrollView style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>Elizabeth Gaudet - Technical writing portfolio</Text>
+      </View>
+      
       <View style={styles.contentWrapper}>
-        <View style={styles.header}>
-          <Text style={styles.headerTitle}>Elizabeth Gaudet - Technical writing portfolio</Text>
-        </View>
-
-        <View style={styles.mainContent}>
+        <View style={styles.mainContent}
           {/* Left Column - About and Instructions */}
           <View style={styles.leftColumn}>
             <View style={styles.aboutCard}>
-              <Text style={styles.sectionTitle}>About this portfolio</Text>
+              <Text style={styles.sectionTitle}>About This Portfolio</Text>
               <Text style={styles.bodyText}>
-                I'm a technical writer with 14 years of experience creating documentation that enables user success. This portfolio showcases both my technical writing expertise and React Native development skills (with help from AI).
+                I'm a technical writer with 14 years of experience creating documentation that empowers users and reduces support burden. This portfolio showcases both my technical writing expertise and React Native development skills.
               </Text>
               <Text style={styles.bodyText}>
                 My background includes extensive experience with docs-as-code workflows, Git-based collaboration, and Agile methodologies. I specialize in translating complex technical concepts into clear, actionable content.
@@ -120,42 +121,35 @@ export default function DocumentationViewer() {
             </View>
 
             <View style={styles.instructionsCard}>
-              <Text style={styles.sectionTitle}>How to use this portfolio</Text>
+              <Text style={styles.sectionTitle}>How to Use This Portfolio</Text>
               <Text style={styles.bodyText}>
-                The documentation examples on the right showcase real technical documentation that I've authored. Each card represents a major documentation section.
+                The documentation examples on the right showcase real technical documentation I've authored. Each card represents a major documentation section.
               </Text>
               <Text style={styles.bodyText}>
-                <Text style={styles.bold}>To explore:</Text> Select the + icon on any card to read the expanded description. Then select "View live documentation" to display each introduction page for documentation sections authored by me. For example, the Actions section includes more than 50 pages I authored. 
+                <Text style={styles.bold}>To explore:</Text> Click the + icon on any card to expand it and read the description. Then click "View live documentation" to see the full documentation on the CloudBees website.
               </Text>
               <Text style={styles.bodyText}>
-                This portfolio itself is a React Native app built with Expo and deployed to Netlify. I also wrote{' '}
-              <Text 
-                style={styles.inlineLink} 
-                onPress={() => Linking.openURL('https://github.com/elgee/docs-viewer-react/?tab=readme-ov-file#expo-mobile-app-to-display-my-documentation-portfolio')}
-              >
-                detailed instructions in the README.md file
-                </Text>
-                {' '}to use the app, demonstrating both my technical writing and development capabilities.
+                This portfolio itself is a React Native app built with Expo and deployed to Netlify, demonstrating both technical writing and development capabilities.
               </Text>
-
             </View>
+
             <TouchableOpacity style={styles.resumeButton} onPress={openResume}>
-              <Text style={styles.resumeButtonText}>Download my resume (PDF)</Text>
+              <Text style={styles.resumeButtonText}>Download Resume (PDF)</Text>
             </TouchableOpacity>
 
             <View style={styles.linksCard}>
               <TouchableOpacity onPress={() => Linking.openURL('https://www.linkedin.com/in/l-b1a37b37')}>
-                <Text style={styles.linkText}>LinkedIn profile</Text>
+                <Text style={styles.linkText}>LinkedIn Profile</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => Linking.openURL('https://github.com/elgee/docs-viewer-react')}>
-                <Text style={styles.linkText}>View source code on GitHub</Text>
+                <Text style={styles.linkText}>View Source Code on GitHub</Text>
               </TouchableOpacity>
             </View>
           </View>
 
           {/* Right Column - Documentation Examples */}
           <View style={styles.rightColumn}>
-            <Text style={styles.columnTitle}>Documentation examples</Text>
+            <Text style={styles.columnTitle}>Documentation Examples</Text>
             {Object.entries(groupedDocs).map(([category, docs]) => (
               <View key={category} style={styles.categorySection}>
                 {docs.map((doc) => (
@@ -186,12 +180,12 @@ export default function DocumentationViewer() {
             ))}
           </View>
         </View>
+      </View>
 
-        <View style={styles.footer}>
-          <Text style={styles.footerText}>
-            Portfolio showcasing technical documentation and React Native development
-          </Text>
-        </View>
+      <View style={styles.footer}>
+        <Text style={styles.footerText}>
+          Portfolio showcasing technical documentation and React Native development
+        </Text>
       </View>
     </ScrollView>
   );
