@@ -78,7 +78,7 @@ export default function DocumentationViewer() {
   };
 
   const openResume = async () => {
-    const resumeUrl = 'https://storied-semifreddo-5b2900.netlify.app/dist/resume.pdf';
+    const resumeUrl = 'https://storied-semifreddo-5b2900.netlify.app/resume.pdf';
     try {
       const supported = await Linking.canOpenURL(resumeUrl);
       if (supported) {
