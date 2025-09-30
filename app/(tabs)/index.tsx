@@ -107,7 +107,7 @@ export default function DocumentationViewer() {
       </View>
       
       <View style={styles.contentWrapper}>
-        <View style={styles.mainContent}
+        <View style={styles.mainContent}>
           {/* Left Column - About and Instructions */}
           <View style={styles.leftColumn}>
             <View style={styles.aboutCard}>
