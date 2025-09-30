@@ -113,7 +113,7 @@ export default function DocumentationViewer() {
               <Text style={styles.bodyText}>
                 I'm a technical writer with 14 years of experience creating documentation that
                 enables user success. This portfolio showcases both my technical writing expertise
-                and React Native development skills (with help from AI).
+                and web development skills.
               </Text>
             </View>
 
@@ -125,9 +125,9 @@ export default function DocumentationViewer() {
               </Text>
               <Text style={styles.bodyText}>
                 <Text style={styles.bold}>To explore:</Text> Select the + icon on any card to read
-                the expanded description. Then select "View live documentation" to display each
-                introduction page for documentation sections authored by me. For example, the
-                Actions section includes more than 50 pages I authored.
+                the expanded description. Then select "View live documentation" to display the
+                introduction page for example sections of my work. For example, the Actions section includes more than 50 pages of my work, accessed through the left navigation. 
+        
               </Text>
               <Text style={styles.bodyText}>
                 This portfolio itself is a React Native app built with Expo and deployed to Netlify.
@@ -141,7 +141,7 @@ export default function DocumentationViewer() {
                   }>
                   detailed instructions in the README.md file
                 </Text>{' '}
-                to use the app, demonstrating both my technical writing and development
+                for using the app, demonstrating both my technical writing and development
                 capabilities.
               </Text>
             </View>
