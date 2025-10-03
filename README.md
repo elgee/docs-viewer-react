@@ -1,13 +1,13 @@
 # Expo mobile app to display my documentation portfolio
 
-Run this React Native mobile app to view my technical writing portfolio. This portfolio includes links to live documentation I authored. 
+Run this React Native mobile app to view my technical writing portfolio. This portfolio includes links to live documentation I authored.
 
 I set up my portfolio using [`create-expo-app`](https://www.npmjs.com/package/create-expo-app) so that you could view it on your phone, if desired.
 
 The [Expo](https://expo.dev) Go app is a sandbox mobile application that enables you to preview React Native applications on a mobile device without the need for a full development environment.
 
 > [!NOTE]
-> If you do not want to install the Expo Go app on your phone, you can still view my portfolio! 
+> If you do not want to install the Expo Go app on your phone, you can still view my portfolio!
 > Go to [https://storied-semifreddo-5b2900.netlify.app/](https://storied-semifreddo-5b2900.netlify.app/). Enjoy.
 
 ## Technical requirements for viewing on mobile
@@ -28,7 +28,7 @@ If you want to view my portfolio on your Apple or Android mobile phone:
 
 ## Run the portfolio app on your phone
 
-1. Start the Expo development server: 
+1. Start the Expo development server:
    ```bash
    git clone https://github.com/elgee/docs-viewer-react.git
    cd docs-viewer-react
@@ -40,7 +40,7 @@ If you want to view my portfolio on your Apple or Android mobile phone:
 
 3. Use your phone camera to scan the QR code displayed in your terminal.
 
-4. The app loads directly on your phone. 
+4. The app loads directly on your phone.
 
 <table>
   <tr>
@@ -53,19 +53,19 @@ If you want to view my portfolio on your Apple or Android mobile phone:
   </tr>
 </table>
 
-Select **View live documentation** to go to the documentation for that section. 
+Select **View live documentation** to go to the documentation for that section.
 
 ## Portfolio content
 
-The app showcases live documentation. 
+The app showcases live documentation.
 Select **View live documentation** to display the introductory page to each documentation section authored by me.
-Some sections contain more than 50 pages. 
+Some sections contain more than 50 pages.
 
-- **Continuous Integration** 
-- **GitHub Actions integration** 
-- **Actions** 
-- **Applications** 
-- **Lexicon** 
+- **Continuous Integration**
+- **GitHub Actions integration**
+- **Actions**
+- **Applications**
+- **Lexicon**
 
 ## Developer tools used
 

@@ -13,13 +13,28 @@ const sampleDocs: Document[] = [
   {
     id: 1,
     category: '',
+    title: 'How to use this app',
+    content:
+      'This portfolio is a React Native app I built with Expo and deployed to Netlify. Check out the README.md file for detailed instructions.',
+    url: 'https://github.com/elgee/docs-viewer-react/?tab=readme-ov-file#expo-mobile-app-to-display-my-documentation-portfolio',
+  },
+  {
+    id: 2,
+    category: '',
+    title: 'Testing Stripe API endpoints',
+    content: "This guide demonstrates how to test Stripe's payment endpoints using cURL.",
+    url: 'https://github.com/elgee/docs-viewer-react/?tab=readme-ov-file#expo-mobile-app-to-display-my-documentation-portfolio',
+  },
+  {
+    id: 3,
+    category: '',
     title: 'Continuous integration (CI)',
     content:
       'How to integrate your CI tool with the platform and take advantage of platform features.',
     url: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/continuous-integration/intro',
   },
   {
-    id: 2,
+    id: 4,
     category: '',
     title: 'GitHub Actions integration',
     content:
@@ -27,27 +42,12 @@ const sampleDocs: Document[] = [
     url: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/github-actions/intro',
   },
   {
-    id: 3,
+    id: 5,
     category: '',
     title: 'Actions',
     content:
       'A comprehensive guide to reusable automation, known as actions, including configuration options, prerequisites, and example workflows.',
     url: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/actions',
-  },
-  {
-    id: 4,
-    category: '',
-    title: 'Applications',
-    content:
-      'How to get started building applications with the platform, including deployment and release.',
-    url: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/applications/applications',
-  },
-  {
-    id: 5,
-    category: '',
-    title: 'Lexicon',
-    content: 'Comprehensive glossary of platform terminology.',
-    url: 'https://docs.cloudbees.com/lexicon/cloudbees-platform',
   },
 ];
 
@@ -111,7 +111,7 @@ export default function DocumentationViewer() {
             <View style={styles.aboutCard}>
               <Text style={styles.sectionTitle}>About this portfolio</Text>
               <Text style={styles.bodyText}>
-                I'm a technical writer with 14 years of experience creating documentation that
+                I am a technical writer with 14 years of experience creating documentation that
                 enables user success. This portfolio showcases both my technical writing expertise
                 and web development skills.
               </Text>
@@ -120,8 +120,7 @@ export default function DocumentationViewer() {
             <View style={styles.instructionsCard}>
               <Text style={styles.sectionTitle}>How to use this portfolio</Text>
               <Text style={styles.bodyText}>
-                The documentation examples on the right showcase real technical documentation that
-                I've authored. Each card represents a major documentation section.
+                The documentation examples on the right showcase technical documentation authored by me. Each card represents a major documentation section.
               </Text>
               <Text style={styles.bodyText}>
                 <Text style={styles.bold}>To explore:</Text> Select the + icon on any card to read
@@ -129,21 +128,7 @@ export default function DocumentationViewer() {
                 introduction page for example sections of my work. For example, the Actions section includes more than 50 pages of my work, accessed through the left navigation. 
         
               </Text>
-              <Text style={styles.bodyText}>
-                This portfolio itself is a React Native app built with Expo and deployed to Netlify.
-                I also wrote{' '}
-                <Text
-                  style={styles.inlineLink}
-                  onPress={() =>
-                    Linking.openURL(
-                      'https://github.com/elgee/docs-viewer-react/?tab=readme-ov-file#expo-mobile-app-to-display-my-documentation-portfolio'
-                    )
-                  }>
-                  detailed instructions in the README.md file
-                </Text>{' '}
-                for using the app, demonstrating both my technical writing and development
-                capabilities.
-              </Text>
+
             </View>
             <TouchableOpacity style={styles.resumeButton} onPress={openResume}>
               <Text style={styles.resumeButtonText}>Download my resume (PDF)</Text>
