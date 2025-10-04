@@ -7,7 +7,9 @@ interface Document {
   title: string;
   content: string;
   url?: string;
-}
+  sourceurl?: string;
+  sourcelabel?: string;
+?}
 
 const sampleDocs: Document[] = [
   {
@@ -21,12 +23,31 @@ const sampleDocs: Document[] = [
   {
     id: 2,
     category: '',
-    title: 'Testing Stripe API endpoints',
-    content: "This guide demonstrates how to test Stripe's payment endpoints using cURL.",
-    url: 'https://github.com/elgee/docs-viewer-react/?tab=readme-ov-file#expo-mobile-app-to-display-my-documentation-portfolio',
+    title: 'Testing Stripe API endpoints with cURL',
+    content:
+      "This guide (in Markdown) demonstrates how to use cURL to test Stripe's payment endpoints.",
+    url: 'https://github.com/elgee/docs-viewer-react/blob/main/stripe-api-test-curl.md',
   },
   {
     id: 3,
+    category: '',
+    title: 'Testing Stripe API endpoints with Postman (authored in DITA)',
+    content:
+      "This PDF documentation created with DITA-OT demonstrates how to use Postman to test Stripe's payment endpoints.",
+    url: 'https://storied-semifreddo-5b2900.netlify.app/stripe-api-test.pdf',
+    sourceurl: 'https://github.com/elgee/stripe-api-test',
+    sourcelabel: 'View DITA source',
+  },
+  {
+    id: 4,
+    category: '',
+    title: 'Actions',
+    content:
+      'A comprehensive guide to reusable automation, known as actions, including configuration options, prerequisites, and example workflows.',
+    url: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/actions',
+  },
+  {
+    id: 5,
     category: '',
     title: 'Continuous integration (CI)',
     content:
@@ -34,20 +55,12 @@ const sampleDocs: Document[] = [
     url: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/continuous-integration/intro',
   },
   {
-    id: 4,
+    id: 6,
     category: '',
     title: 'GitHub Actions integration',
     content:
       'How to set up an integration with GitHub Actions so that you can view GHA workflows in the platform.',
     url: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/github-actions/intro',
-  },
-  {
-    id: 5,
-    category: '',
-    title: 'Actions',
-    content:
-      'A comprehensive guide to reusable automation, known as actions, including configuration options, prerequisites, and example workflows.',
-    url: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/actions',
   },
 ];
 
@@ -124,7 +137,7 @@ export default function DocumentationViewer() {
               </Text>
               <Text style={styles.bodyText}>
                 <Text style={styles.bold}>To explore:</Text> Select the + icon on any card to read
-                the expanded description. Then select "View live documentation" to display the
+                the expanded description. Select "View" to display the
                 introduction page for example sections of my work. For example, the Actions section includes more than 50 pages of my work, accessed through the left navigation. 
         
               </Text>
