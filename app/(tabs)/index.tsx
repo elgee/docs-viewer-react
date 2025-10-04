@@ -35,7 +35,7 @@ const sampleDocs: Document[] = [
     content:
       "This PDF documentation created with DITA-OT demonstrates how to use Postman to test Stripe's payment endpoints.",
     url: 'https://storied-semifreddo-5b2900.netlify.app/stripe-api-test.pdf',
-    sourceurl: 'https://github.com/elgee/stripe-api-test',
+    sourceurl: 'https://github.com/elgee/stripe-api-test-docs',
     sourcelabel: 'View DITA source',
   },
   {
