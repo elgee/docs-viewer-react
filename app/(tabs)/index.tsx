@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking, Alert } from 'react-native';
+import { Alert, Linking, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 interface Document {
   id: number;
@@ -9,7 +9,7 @@ interface Document {
   url?: string;
   sourceurl?: string;
   sourcelabel?: string;
-?}
+}
 
 const sampleDocs: Document[] = [
   {
@@ -133,15 +133,15 @@ export default function DocumentationViewer() {
             <View style={styles.instructionsCard}>
               <Text style={styles.sectionTitle}>How to use this portfolio</Text>
               <Text style={styles.bodyText}>
-                The documentation examples on the right showcase technical documentation authored by me. Each card represents a major documentation section.
+                The documentation examples on the right showcase technical documentation authored by
+                me. Each card represents a major documentation section.
               </Text>
               <Text style={styles.bodyText}>
                 <Text style={styles.bold}>To explore:</Text> Select the + icon on any card to read
-                the expanded description. Select "View" to display the
-                introduction page for example sections of my work. For example, the Actions section includes more than 50 pages of my work, accessed through the left navigation. 
-        
+                the expanded description. Select "View" to display the introduction page for example
+                sections of my work. For example, the Actions section includes more than 50 pages of
+                my work, accessed through the left navigation.
               </Text>
-
             </View>
             <TouchableOpacity style={styles.resumeButton} onPress={openResume}>
               <Text style={styles.resumeButtonText}>Download my resume (PDF)</Text>
