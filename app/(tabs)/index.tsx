@@ -184,6 +184,13 @@ export default function DocumentationViewer() {
                             <Text style={styles.linkButtonText}>View</Text>
                           </TouchableOpacity>
                         )}
+                        {doc.sourceurl && (
+                          <TouchableOpacity
+                            style={styles.linkButton}
+                            onPress={() => openDocumentLink(doc.sourceurl!)}>
+                            <Text style={styles.linkButtonText}>View source code</Text>
+                          </TouchableOpacity>
+                        )}
                       </View>
                     )}
                   </View>
