@@ -10,6 +10,7 @@ import {
   Platform,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import PropTypes from 'prop-types';
 
 export default function Portfolio() {
   const [expandedMobile, setExpandedMobile] = useState(null);
@@ -19,76 +20,85 @@ export default function Portfolio() {
   const projects = [
     {
       id: 1,
-      title: 'Portfolio App Documentation',
-      category: 'Technical Documentation',
+      title: 'CloudBees platform actions reference',
+      category: 'Workflow automation documentation',
       summary:
-        'Created README documentation for this React Native portfolio app built with Expo. Includes setup instructions, deployment process to Netlify, and technical architecture details. Demonstrates cross-platform development (iOS, Android, web) and responsive design principles.',
-      tech: 'React Native, Expo, Netlify, JavaScript, cross-platform development, responsive design',
-      link: 'https://github.com/elgee/docs-viewer-react/?tab=readme-ov-file#expo-mobile-app-to-display-my-documentation-portfolio',
+        'Documented 50+ pages of workflow automation actions organized into 15+ hierarchical categories. Use the documentation left navigation to expand categories (Build tools, Deploy tools, Security scanners, etc.) and view individual action pages. Each action includes prerequisites, parameters, and YAML workflow examples.',
+      tech: 'CI/CD, YAML, GitHub Actions, Jenkins, AWS, Docker, Helm, Kubernetes, security scanning (including Snyk, Coverity, Trivy), AsciiDoc',
+      link: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/actions',
     },
     {
       id: 2,
-      title: 'Testing Stripe API Endpoints with cURL',
-      category: 'API Testing Documentation',
+      title: 'SAML single sign-on (SSO) configuration guide',
+      category: 'Security and authentication documentation',
       summary:
-        'Created technical guide demonstrating how to use cURL command-line tool to test Stripe payment API endpoints. Documentation written in Markdown with command examples, endpoint descriptions, and payment processing workflows. Covers authentication, request formatting, and response handling.',
-      tech: 'Markdown, cURL, Stripe API, REST API testing, command-line tools, payment processing',
-      link: 'https://github.com/elgee/docs-viewer-react/blob/main/stripe-api-test-curl.md',
+        'Created comprehensive enterprise authentication guide for configuring SAML 2.0 single sign-on in CloudBees platform. Includes domain verification procedures, identity provider integration steps, security requirements checklist, and connection management. Covers admin workflows for enabling strict mode, auto-provisioning, and MFA integration.',
+      tech: 'SAML 2.0, SSO, DNS configuration, IdP integration, XML metadata, RSA-OAEP encryption, role-based access control, AsciiDoc',
+      link: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/secure/single-sign-on',
     },
     {
       id: 3,
-      title: 'Testing Stripe API Endpoints with Postman',
-      category: 'API Testing Documentation',
+      title: 'GitHub Actions integration with CloudBees platform',
+      category: 'Integration guide',
+      summary:
+        'Created 14-page usage guide enabling teams to visualize GitHub Actions workflows in CloudBees platform. Includes onboarding and instructions for artifact registration, test result publishing, evidence collection, and security scanning integration.',
+      tech: 'GitHub Actions, GitHub App, workflow integration, artifact traceability, security scanning, JUnit, evidence data, analytics dashboards, AsciiDoc',
+      link: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/github-actions',
+    },
+    {
+      id: 4,
+      title: 'Testing Stripe API endpoints with Postman',
+      category: 'API testing documentation',
       summary:
         'Created technical guide demonstrating how to use Postman to test Stripe payment API endpoints. Documentation authored in DITA XML and published to PDF using DITA Open Toolkit. Includes setup instructions, endpoint testing procedures, and example API calls for payment processing workflows.',
       tech: 'DITA XML, DITA-OT, Postman, Stripe API, REST API testing, payment processing',
-      link: 'https://storied-semifreddo-5b2900.netlify.app/stripe-api-test.pdf',
+      link: 'https://technical-writer-portfolio.netlify.app/stripe-api-test.pdf',
       sourceLink: 'https://github.com/elgee/stripe-api-test-docs',
       sourceLabel: 'View DITA source',
     },
     {
-      id: 4,
-      title: 'CloudBees Platform Actions Reference',
-      category: 'API & Developer Documentation',
-      summary:
-        'Documented 50+ workflow automation actions organized into 15+ hierarchical categories. Use the documentation left navigation to expand categories (Build tools, Deploy tools, Security scanners, etc.) and view individual action pages. Each action includes prerequisites, parameters, and YAML workflow examples.',
-      tech: 'CI/CD, YAML, GitHub Actions, Jenkins, AWS, Docker, Helm, Kubernetes, security scanning (including Snyk, Coverity, Trivy)',
-      link: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/actions',
-    },
-    {
       id: 5,
-      title: 'CloudBees CI and Jenkins Platform Integration',
-      category: 'Integration Documentation',
+      title: 'CloudBees CI and Jenkins integration with CloudBees platform',
+      category: 'Integration guide',
       summary:
-        'Created 6-page integration guide enabling enterprise teams to connect Jenkins/CloudBees CI pipelines to CloudBees Platform. Includes step-by-step setup, Jenkinsfile code examples for artifact registration and security scanning (10+ tools including Snyk, Trivy, Grype), test result publishing, and analytics dashboard documentation.',
-      tech: 'Jenkins, CloudBees CI, Multibranch Pipelines, GitHub, Jenkinsfile, security scanning tools, VSM dashboards',
+        'Created 6-page integration guide enabling enterprise teams to connect Jenkins/CloudBees CI pipelines to CloudBees platform for utilizing its security and analytics features. Includes step-by-step setup and usage examples.',
+      tech: 'Jenkins, CloudBees CI, Multibranch Pipelines, GitHub, Jenkinsfile, security scanning tools, VSM dashboards, AsciiDoc',
       link: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/continuous-integration/intro',
     },
     {
       id: 6,
-      title: 'CloudBees Platform Lexicon',
-      category: 'Reference Documentation',
+      title: 'Testing Stripe API endpoints with cURL',
+      category: 'API testing documentation',
       summary:
-        'Created comprehensive glossary defining 80+ terms used across the CloudBees Platform, organized alphabetically from A-Z. Includes definitions for workflows, CI/CD concepts, feature management, security terms, analytics, integrations, and platform-specific terminology. Each term includes context-specific explanations and links to full documentation.',
-      tech: 'CI/CD terminology, DevOps concepts, feature flags, RBAC, DORA metrics, SAML, OIDC, VSM, ASPM',
-      link: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/lexicon',
+        'Created technical guide demonstrating how to use cURL to test Stripe payment API endpoints. Documentation written in Markdown with command examples, endpoint descriptions, and payment processing workflows. Covers authentication, request formatting, and response handling.',
+      tech: 'Markdown, cURL, Stripe API, REST API testing, command-line tools, payment processing',
+      link: 'https://github.com/elgee/docs-viewer-react/blob/main/stripe-api-test-curl.md',
     },
     {
       id: 7,
-      title: 'GitHub Actions Integration with CloudBees Platform',
-      category: 'Integration Documentation',
+      title: 'CloudBees platform lexicon',
+      category: 'Technical glossary',
       summary:
-        'Created integration documentation enabling teams to connect GitHub Actions workflows to CloudBees Platform. Includes getting started guide, workflow/run visualization setup, and guides for artifact registration, test result publishing, evidence collection, and security scanning integration with 6 tools (Black Duck, Coverity, Gitleaks, Gosec, Grype, Trivy). Documentation covers supported trigger types, job logs, run details, and analytics dashboard integration.',
-      tech: 'GitHub Actions, GitHub App, workflow integration, artifact traceability, security scanning, JUnit, evidence data, analytics dashboards',
-      link: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/github-actions',
+        'Created comprehensive glossary defining 80+ terms used across the CloudBees platform. Includes definitions for workflows, CI/CD concepts, feature management, security terms, analytics, integrations, and platform-specific terminology. Each term includes context-specific explanations and links to full documentation.',
+      tech: 'CI/CD terminology, DevOps concepts, feature flags, RBAC, OIDC, AsciiDoc',
+      link: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/lexicon',
+    },
+    {
+      id: 8,
+      title: 'Portfolio app documentation',
+      category: 'Mobile app documentation',
+      summary:
+        'Created README documentation for this React Native portfolio app built with Expo. Includes setup instructions, deployment process to Netlify, and technical architecture details. Demonstrates cross-platform development (iOS, web) and responsive design principles.',
+      tech: 'React Native, Expo, Netlify, JavaScript, responsive design',
+      link: 'https://github.com/elgee/docs-viewer-react/?tab=readme-ov-file#expo-mobile-app-to-display-my-documentation-portfolio',
     },
   ];
 
-  const handleLinkPress = (url) => {
+  const handleLinkPress = (link) => {
     if (Platform.OS === 'web') {
-      window.open(url, '_blank');
+      window.open(link, '_blank');
     } else {
-      Linking.openURL(url);
+      Linking.openURL(link);
     }
   };
 
@@ -115,7 +125,7 @@ export default function Portfolio() {
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.viewButton} onPress={() => handleLinkPress(project.link)}>
-          <Text style={styles.viewButtonText}>View Documentation</Text>
+          <Text style={styles.viewButtonText}>View documentation</Text>
           <Ionicons name='open-outline' size={16} color='#2563eb' />
         </TouchableOpacity>
 
@@ -130,6 +140,19 @@ export default function Portfolio() {
       </View>
     </View>
   );
+
+  ProjectCard.propTypes = {
+    project: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      category: PropTypes.string.isRequired,
+      summary: PropTypes.string.isRequired,
+      tech: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired,
+      sourceLink: PropTypes.string,
+      sourceLabel: PropTypes.string,
+    }).isRequired,
+  };
 
   const ProjectAccordion = ({ project }) => {
     const isExpanded = expandedMobile === project.id;
@@ -164,7 +187,7 @@ export default function Portfolio() {
               <TouchableOpacity
                 style={styles.viewButton}
                 onPress={() => handleLinkPress(project.link)}>
-                <Text style={styles.viewButtonText}>View Documentation</Text>
+                <Text style={styles.viewButtonText}>View documentation</Text>
                 <Ionicons name='open-outline' size={16} color='#2563eb' />
               </TouchableOpacity>
 
@@ -183,32 +206,40 @@ export default function Portfolio() {
     );
   };
 
+  ProjectAccordion.propTypes = {
+    project: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      category: PropTypes.string.isRequired,
+      summary: PropTypes.string.isRequired,
+      tech: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired,
+      sourceLink: PropTypes.string,
+      sourceLabel: PropTypes.string,
+    }).isRequired,
+  };
+
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.scrollContent}>
-      <View style={[styles.content, isDesktop && styles.contentDesktop]}>
-        {/* Hero Section */}
-        <View style={[styles.hero, isDesktop && styles.heroDesktop]}>
+      {/* Hero Section - Full Width */}
+      <View style={[styles.hero, isDesktop && styles.heroDesktop]}>
+        <View style={[styles.heroContent, isDesktop && styles.heroContentDesktop]}>
           <Text style={[styles.heroTitle, isDesktop && styles.heroTitleDesktop]}>
-            Technical Documentation Portfolio
+            Technical documentation portfolio
           </Text>
           <Text style={[styles.heroSubtitle, isDesktop && styles.heroSubtitleDesktop]}>
-            Senior Technical Writer specializing in developer documentation, API references,
-            integration guides, and user documentation for enterprise software platforms.
+            Senior Technical Writer / Documentation Engineer
           </Text>
-          <View style={[styles.badges, isDesktop && styles.badgesDesktop]}>
-            <View style={styles.badge}>
-              <Text style={styles.badgeText}>API Documentation</Text>
-            </View>
-            <View style={[styles.badge, styles.badgePurple]}>
-              <Text style={styles.badgeTextPurple}>Integration Guides</Text>
-            </View>
-            <View style={[styles.badge, styles.badgeGreen]}>
-              <Text style={styles.badgeTextGreen}>Developer Experience</Text>
-            </View>
-          </View>
+          <Text style={[styles.heroSubtitle, isDesktop && styles.heroSubtitleDesktop]}>
+            I specialize in developer documentation, API references, and integration guides for
+            enterprise platforms. This portfolio showcases work authored by me with review and input
+            from subject matter experts.
+          </Text>
         </View>
+      </View>
 
-        {/* Projects - Desktop Cards or Mobile Accordions */}
+      {/* Projects - Centered Content */}
+      <View style={[styles.content, isDesktop && styles.contentDesktop]}>
         {isDesktop ? (
           <View style={styles.cardsContainer}>
             <View style={styles.cardsGrid}>
@@ -224,24 +255,24 @@ export default function Portfolio() {
             ))}
           </View>
         )}
+      </View>
 
-        {/* Call to Action */}
-        <View style={styles.cta}>
+      {/* Call to Action - Full Width */}
+      <View style={styles.cta}>
+        <View style={[styles.ctaContent, isDesktop && styles.ctaContentDesktop]}>
           <Text style={[styles.ctaTitle, isDesktop && styles.ctaTitleDesktop]}>
-            Let's Create Documentation That Works
+            Creating documentation that enables user success
           </Text>
           <Text style={styles.ctaSubtitle}>
-            I help teams build clear, comprehensive documentation that reduces support costs and
-            accelerates user adoption.
+            I transform complex technical concepts into documentation that engages users.
           </Text>
           <View style={[styles.ctaButtons, isDesktop && styles.ctaButtonsDesktop]}>
             <TouchableOpacity
-              style={[styles.ctaButtonPrimary, isDesktop && styles.ctaButtonPrimaryDesktop]}>
-              <Text style={styles.ctaButtonPrimaryText}>View Resume</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[styles.ctaButtonSecondary, isDesktop && styles.ctaButtonSecondaryDesktop]}>
-              <Text style={styles.ctaButtonSecondaryText}>Get in Touch</Text>
+              style={[styles.ctaButtonPrimary, isDesktop && styles.ctaButtonPrimaryDesktop]}
+              onPress={() =>
+                handleLinkPress('https://technical-writer-portfolio.netlify.app/resume.pdf')
+              }>
+              <Text style={styles.ctaButtonPrimaryText}>View resume</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -253,7 +284,7 @@ export default function Portfolio() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f8fafc',
+    backgroundColor: '#0f172a',
   },
   scrollContent: {
     flexGrow: 1,
@@ -270,29 +301,41 @@ const styles = StyleSheet.create({
   hero: {
     marginBottom: 32,
     alignItems: 'center',
+    backgroundColor: '#1e293b',
+    width: '100%',
   },
   heroDesktop: {
-    alignItems: 'flex-start',
     marginBottom: 48,
   },
+  heroContent: {
+    padding: 16,
+    width: '100%',
+    alignSelf: 'center',
+  },
+  heroContentDesktop: {
+    maxWidth: 1200,
+    paddingHorizontal: 32,
+  },
   heroTitle: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#0f172a',
+    fontSize: 40,
+    fontWeight: '900',
+    color: 'white',
     marginBottom: 16,
+    marginTop: 16,
     textAlign: 'center',
-    lineHeight: 36,
+    lineHeight: 48,
+    letterSpacing: -1,
   },
   heroTitleDesktop: {
-    fontSize: 40,
+    fontSize: 56,
+    lineHeight: 64,
     textAlign: 'left',
-    lineHeight: 48,
   },
   heroSubtitle: {
-    fontSize: 16,
-    color: '#475569',
-    marginBottom: 20,
-    textAlign: 'center',
+    fontSize: 20,
+    color: '#94a3b8',
+    marginBottom: 17,
+    textAlign: 'left',
     lineHeight: 24,
   },
   heroSubtitleDesktop: {
@@ -300,42 +343,6 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     lineHeight: 28,
     marginBottom: 24,
-  },
-  badges: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 12,
-    justifyContent: 'center',
-  },
-  badgesDesktop: {
-    justifyContent: 'flex-start',
-  },
-  badge: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    backgroundColor: '#dbeafe',
-    borderRadius: 20,
-  },
-  badgeText: {
-    color: '#1e40af',
-    fontWeight: '600',
-    fontSize: 14,
-  },
-  badgePurple: {
-    backgroundColor: '#f3e8ff',
-  },
-  badgeTextPurple: {
-    color: '#7e22ce',
-    fontWeight: '600',
-    fontSize: 14,
-  },
-  badgeGreen: {
-    backgroundColor: '#dcfce7',
-  },
-  badgeTextGreen: {
-    color: '#15803d',
-    fontWeight: '600',
-    fontSize: 14,
   },
   cardsContainer: {
     marginBottom: 32,
@@ -347,9 +354,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   card: {
-    backgroundColor: 'white',
+    backgroundColor: '#1e293b',
     borderRadius: 12,
     padding: 24,
+    paddingTop: 16,
     borderWidth: 1,
     borderColor: '#e2e8f0',
     ...Platform.select({
@@ -380,12 +388,18 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#0f172a',
+    color: '#ffffff',
   },
   cardCategory: {
     fontSize: 12,
-    color: '#64748b',
-    marginTop: 4,
+    color: 'white',
+    backgroundColor: '#f59e0b',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 16,
+    alignSelf: 'flex-start',
+    marginTop: 8,
+    fontWeight: '600',
   },
   cardContent: {
     gap: 12,
@@ -402,7 +416,7 @@ const styles = StyleSheet.create({
   },
   sectionText: {
     fontSize: 14,
-    color: '#475569',
+    color: '#cbd5e1',
     lineHeight: 20,
   },
   buttonContainer: {
@@ -447,7 +461,7 @@ const styles = StyleSheet.create({
   accordionTitle: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#0f172a',
+    color: '#361c0a',
   },
   accordionCategory: {
     fontSize: 12,
@@ -463,10 +477,17 @@ const styles = StyleSheet.create({
   },
   cta: {
     backgroundColor: '#2563eb',
-    borderRadius: 12,
     padding: 24,
     alignItems: 'center',
-    marginTop: 16,
+    width: '100%',
+  },
+  ctaContent: {
+    width: '100%',
+    alignSelf: 'center',
+    alignItems: 'center',
+  },
+  ctaContentDesktop: {
+    maxWidth: 1200,
   },
   ctaTitle: {
     fontSize: 22,
