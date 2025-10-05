@@ -43,7 +43,7 @@ export default function Portfolio() {
       summary:
         'Created 14-page usage guide enabling teams to visualize GitHub Actions workflows in CloudBees platform. Includes onboarding and instructions for artifact registration, test result publishing, evidence collection, and security scanning integration.',
       tech: 'GitHub Actions, GitHub App, workflow integration, artifact traceability, security scanning, JUnit, evidence data, analytics dashboards, AsciiDoc',
-      link: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/github-actions',
+      link: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/github-actions/intro',
     },
     {
       id: 4,
@@ -94,6 +94,18 @@ export default function Portfolio() {
     },
   ];
 
+  const getCategoryColor = (category) => {
+    const colors = {
+      'Workflow automation documentation': '#3b82f6', // blue
+      'Security and authentication documentation': '#ef4444', // red
+      'Integration guide': '#10b981', // green
+      'API testing documentation': '#8b5cf6', // purple
+      'Technical glossary': '#f59e0b', // amber
+      'Mobile app documentation': '#ec4899', // pink
+    };
+    return colors[category] || '#6b7280'; // gray as default
+  };
+
   const handleLinkPress = (link) => {
     if (Platform.OS === 'web') {
       window.open(link, '_blank');
@@ -107,7 +119,10 @@ export default function Portfolio() {
       <View style={styles.cardHeader}>
         <View style={styles.headerText}>
           <Text style={styles.cardTitle}>{project.title}</Text>
-          <Text style={styles.cardCategory}>{project.category}</Text>
+          <Text
+            style={[styles.cardCategory, { backgroundColor: getCategoryColor(project.category) }]}>
+            {project.category}
+          </Text>
         </View>
       </View>
 
@@ -125,16 +140,16 @@ export default function Portfolio() {
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.viewButton} onPress={() => handleLinkPress(project.link)}>
-          <Text style={styles.viewButtonText}>View documentation</Text>
-          <Ionicons name='open-outline' size={16} color='#2563eb' />
+          <Text style={styles.viewButtonTextDesktop}>View documentation</Text>
+          <Ionicons name='open-outline' size={18} color='#60a5fa' />
         </TouchableOpacity>
 
         {project.sourceLink && (
           <TouchableOpacity
             style={styles.viewButton}
             onPress={() => handleLinkPress(project.sourceLink)}>
-            <Text style={styles.viewButtonText}>{project.sourceLabel}</Text>
-            <Ionicons name='logo-github' size={16} color='#2563eb' />
+            <Text style={styles.viewButtonTextDesktop}>{project.sourceLabel}</Text>
+            <Ionicons name='logo-github' size={18} color='#60a5fa' />
           </TouchableOpacity>
         )}
       </View>
@@ -165,38 +180,44 @@ export default function Portfolio() {
           <View style={styles.accordionHeaderContent}>
             <View style={styles.accordionTitleContainer}>
               <Text style={styles.accordionTitle}>{project.title}</Text>
-              <Text style={styles.accordionCategory}>{project.category}</Text>
+              <Text
+                style={[
+                  styles.accordionCategoryBadge,
+                  { backgroundColor: getCategoryColor(project.category) },
+                ]}>
+                {project.category}
+              </Text>
             </View>
           </View>
-          <Ionicons name={isExpanded ? 'chevron-up' : 'chevron-down'} size={20} color='#94a3b8' />
+          <Ionicons name={isExpanded ? 'chevron-up' : 'chevron-down'} size={20} color='#64748b' />
         </TouchableOpacity>
 
         {isExpanded && (
           <View style={styles.accordionContent}>
             <View style={styles.section}>
-              <Text style={styles.sectionLabel}>Summary:</Text>
-              <Text style={styles.sectionText}>{project.summary}</Text>
+              <Text style={styles.sectionLabelMobile}>Summary:</Text>
+              <Text style={styles.sectionTextMobile}>{project.summary}</Text>
             </View>
 
             <View style={styles.section}>
-              <Text style={styles.sectionLabel}>Technologies:</Text>
-              <Text style={styles.sectionText}>{project.tech}</Text>
+              <Text style={styles.sectionLabelMobile}>Technologies:</Text>
+              <Text style={styles.sectionTextMobile}>{project.tech}</Text>
             </View>
 
             <View style={styles.buttonContainer}>
               <TouchableOpacity
                 style={styles.viewButton}
                 onPress={() => handleLinkPress(project.link)}>
-                <Text style={styles.viewButtonText}>View documentation</Text>
-                <Ionicons name='open-outline' size={16} color='#2563eb' />
+                <Text style={styles.viewButtonTextMobile}>View documentation</Text>
+                <Ionicons name='open-outline' size={18} color='#1d4ed8' />
               </TouchableOpacity>
 
               {project.sourceLink && (
                 <TouchableOpacity
                   style={styles.viewButton}
                   onPress={() => handleLinkPress(project.sourceLink)}>
-                  <Text style={styles.viewButtonText}>{project.sourceLabel}</Text>
-                  <Ionicons name='logo-github' size={16} color='#2563eb' />
+                  <Text style={styles.viewButtonTextMobile}>{project.sourceLabel}</Text>
+                  <Ionicons name='logo-github' size={18} color='#1d4ed8' />
                 </TouchableOpacity>
               )}
             </View>
@@ -359,7 +380,7 @@ const styles = StyleSheet.create({
     padding: 24,
     paddingTop: 16,
     borderWidth: 1,
-    borderColor: '#e2e8f0',
+    borderColor: '#334155',
     ...Platform.select({
       web: {
         boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
@@ -393,7 +414,6 @@ const styles = StyleSheet.create({
   cardCategory: {
     fontSize: 12,
     color: 'white',
-    backgroundColor: '#f59e0b',
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 16,
@@ -411,12 +431,23 @@ const styles = StyleSheet.create({
   sectionLabel: {
     fontSize: 13,
     fontWeight: '600',
-    color: '#334155',
+    color: '#64748b',
     marginBottom: 4,
   },
   sectionText: {
     fontSize: 14,
     color: '#cbd5e1',
+    lineHeight: 20,
+  },
+  sectionLabelMobile: {
+    fontSize: 13,
+    fontWeight: '600',
+    color: '#475569',
+    marginBottom: 4,
+  },
+  sectionTextMobile: {
+    fontSize: 14,
+    color: '#1e293b',
     lineHeight: 20,
   },
   buttonContainer: {
@@ -427,10 +458,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 8,
   },
-  viewButtonText: {
-    color: '#2563eb',
+  // For desktop cards (dark background) - LIGHT blue
+  viewButtonTextDesktop: {
+    color: '#60a5fa', // Light blue for dark background
     fontWeight: '600',
-    fontSize: 14,
+    fontSize: 17,
+  },
+
+  // For mobile accordions (white background) - DARK blue
+  viewButtonTextMobile: {
+    color: '#1d4ed8', // Dark blue for white background
+    fontWeight: '600',
+    fontSize: 17,
   },
   accordionList: {
     gap: 12,
@@ -461,12 +500,17 @@ const styles = StyleSheet.create({
   accordionTitle: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#361c0a',
+    color: '#1e293b',
+    marginBottom: 6,
   },
-  accordionCategory: {
-    fontSize: 12,
-    color: '#64748b',
-    marginTop: 2,
+  accordionCategoryBadge: {
+    fontSize: 11,
+    color: 'white',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 12,
+    alignSelf: 'flex-start',
+    fontWeight: '600',
   },
   accordionContent: {
     padding: 16,
@@ -536,23 +580,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
   },
-  ctaButtonSecondary: {
-    paddingHorizontal: 24,
-    paddingVertical: 12,
-    backgroundColor: 'transparent',
-    borderWidth: 2,
-    borderColor: 'white',
-    borderRadius: 8,
-    width: '100%',
-  },
-  ctaButtonSecondaryDesktop: {
-    width: 'auto',
-    minWidth: 150,
-  },
-  ctaButtonSecondaryText: {
-    color: 'white',
-    fontWeight: '600',
-    fontSize: 16,
-    textAlign: 'center',
-  },
 });
+
