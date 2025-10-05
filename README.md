@@ -1,34 +1,43 @@
-# Expo mobile app to display my documentation portfolio
+# Technical writing portfolio
 
-Run this React Native mobile app to view my technical writing portfolio. This portfolio includes links to live documentation I authored.
+Start here: [View portfolio](https://technical-writer-portfolio.netlify.app/)
+This portfolio is fully responsive and works on mobile browsers.
 
-I set up my portfolio using [`create-expo-app`](https://www.npmjs.com/package/create-expo-app) so that you could view it on your phone, if desired.
+## Portfolio highlights
 
-The [Expo](https://expo.dev) Go app is a sandbox mobile application that enables you to preview React Native applications on a mobile device without the need for a full development environment.
+- **CloudBees actions reference**: 50+ pages of workflow automation actions with YAML examples (AsciiDoc)
+- **SAML SSO configuration**: Enterprise authentication guide (AsciiDoc)
+- **GitHub Actions integration**: 14-page guide to using GitHub Actions with CloudBees platform (AsciiDoc)
+- **Stripe API testing using cURL**: Command-line testing guide (Markdown)
+- **Stripe API testing using Postman**: API testing guide (DITA XML published as PDF)
+- **CloudBees CI and Jenkins integration**: 6-page step-by-step setup and usage guide (AsciiDoc)
+- **Platform lexicon**: 80+ term technical glossary (AsciiDoc)
 
-> [!NOTE]
-> If you do not want to install the Expo Go app on your phone, you can still view my portfolio!
-> Go to [https://storied-semifreddo-5b2900.netlify.app/](https://storied-semifreddo-5b2900.netlify.app/). Enjoy.
+## Development tools
 
-## Technical requirements for viewing on mobile
+This portfolio app is built with React Native and [Expo](https://expo.dev) to explore cross-platform development:
 
-If you want to view my portfolio on your Apple or Android mobile phone:
+- Single codebase for web and mobile
+- Responsive design principles
+- Deployed to Netlify for web hosting
+- Available via Expo Go for native mobile experience
 
-1. Check that you have the following developer tools installed on your computer:
+## Run locally on a mobile phone with Expo Go
 
-   - Node.js
-   - npm
-   - Git
-   - Command line access in a terminal
+This portfolio is deployable as both a web app and a native mobile app.
+
+To run as a native mobile app:
+
+1. Confirm that you have Node.js, npm, and Git installed on your computer.
 
 2. Install the appropriate version of the Expo Go app for your phone.
 
    - For Apple: [iOS App Store](https://apps.apple.com/app/expo-go/id982107779)
    - For Android: [Google Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent)
 
-## Run the portfolio app on your phone
+    >NOTE: Instructions have been verified on iOS only.
 
-1. Start the Expo development server:
+3. Start the Expo development server on your computer:
    ```bash
    git clone https://github.com/elgee/docs-viewer-react.git
    cd docs-viewer-react
@@ -36,46 +45,8 @@ If you want to view my portfolio on your Apple or Android mobile phone:
    npx expo start
    ```
 
-2. Open the Expo Go app on your phone.
+4. Open the Expo Go app on your phone.
 
-3. Use your phone camera to scan the QR code displayed in your terminal.
+5. Use your phone camera to scan the QR code displayed in your terminal.
 
-4. The app loads directly on your phone.
-
-<table>
-  <tr>
-    <td><img src="assets/images/image0.png" width="280"></td>
-    <td><img src="assets/images/image1.png" width="280"></td>
-  </tr>
-  <tr>
-    <td align="center">Home screen</td>
-    <td align="center">Expanded view</td>
-  </tr>
-</table>
-
-Select **View live documentation** to go to the documentation for that section.
-
-## Portfolio content
-
-The app showcases live documentation.
-Select **View live documentation** to display the introductory page to each documentation section authored by me.
-Some sections contain more than 50 pages.
-
-- **Continuous Integration**
-- **GitHub Actions integration**
-- **Actions**
-- **Applications**
-- **Lexicon**
-
-## Developer tools used
-
-- React Native
-- Expo
-- TypeScript
-- Netlify
-- GitHub
-- Markdown
-
-## About
-
-This app serves as a portfolio for my professional technical documentation work and my ability to use AI effectively. I set up this React Native mobile app with AI assistance.
+6. The app loads directly on your phone.
