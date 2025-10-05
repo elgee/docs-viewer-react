@@ -81,7 +81,7 @@ export default function Portfolio() {
       summary:
         'Created comprehensive glossary defining 80+ terms used across the CloudBees platform. Includes definitions for workflows, CI/CD concepts, feature management, security terms, analytics, integrations, and platform-specific terminology. Each term includes context-specific explanations and links to full documentation.',
       tech: 'CI/CD terminology, DevOps concepts, feature flags, RBAC, OIDC, AsciiDoc',
-      link: 'https://docs.cloudbees.com/docs/cloudbees-platform/latest/lexicon',
+      link: 'https://docs.cloudbees.com/lexicon/cloudbees-platform',
     },
     {
       id: 8,
