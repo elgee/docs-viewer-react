@@ -41,5 +41,9 @@
     "gh-pages": "^6.3.0",
     "typescript": "~5.9.2"
   },
+  "scripts": {
+  "start": "expo start -c",
+  "clear": "rm -rf node_modules .expo && npm install"
+},
   "private": true
 }
