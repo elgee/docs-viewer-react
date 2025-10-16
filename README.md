@@ -1,6 +1,6 @@
 # Technical writing portfolio
 
-Start here: [View portfolio](https://technical-writer-portfolio.netlify.app/)
+Start here: [View portfolio](https://technical-writer-portfolio.netlify.app/). 
 This portfolio is fully responsive and works on mobile browsers.
 
 ## Portfolio highlights
